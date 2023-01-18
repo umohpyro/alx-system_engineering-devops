@@ -1,43 +1,13 @@
 #!/usr/bin/env bash
+# Configure Nginx so that its HTTP response contains
+# a custom header
+# Add HAProxy PPA
+sudo apt-get -y install software-properties-common
+sudo add-apt-repository -y ppa:vbernat/haproxy-2.5
+sudo apt-get -y update
 
-# Installs HAProxy version 1.8 with the following configurations:
-
-#+    Enables management via the init script.
-
-#+    Distributes requests using a round-robin algorithm.
-
-
-
-apt-get update
-
-apt-get install -y haproxy
-
-
-
-printf %s "
-
-frontend hbnb-lb_front
-
-        bind *:80
-
-        mode http
-
-        default_backend hbnb-lb_back
-
-backend hbnb-lb_back
-
-        balance roundrobin
-
-        server 1723-web-01 100.26.181.86:80 check
-
-        server 1723-web-02 34.238.192.13:80 check
-
-" >> /etc/haproxy/haproxy.cfg
-
-
-
-echo "ENABLED=1" >> /etc/default/haproxy
-
-
-
-service haproxy start
+# Install HAProxy
+sudo apt-get -y install haproxy
+sudo sed -i -e '$aENABLED=1\n' /etc/default/haproxy
+sudo sed -i -e '$a\listen http-in\n\tbind :80\n\tbalance roundrobin\n\tserver 93394-web-01 54.197.82.23:80 check\n\tserver 93394-web-02 18.207.112.232:80 check\n' /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
