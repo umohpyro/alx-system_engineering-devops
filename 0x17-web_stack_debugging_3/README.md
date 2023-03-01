@@ -1,4 +1,4 @@
-# Solution to tasks on 0x17. Web stack debugging #3
+# 0x17. Web stack debugging #3
 ### Concepts
 
 _For this project, we expect you to look at these concepts:_
