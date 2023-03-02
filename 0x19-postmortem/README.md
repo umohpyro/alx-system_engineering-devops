@@ -13,7 +13,7 @@ On March 1, 2023, between 3:00 PM and 5:00 PM EST, our web application experienc
 *   4:00 PM: After optimizing the queries, the issue persisted. The engineer escalated the issue to the database team.
 *   4:15 PM: The database team identified a deadlock between two queries and resolved the issue.
 *   4:30 PM: The application was tested and verified to be functioning properly.
-*   5:00 PM: The incident was declared resolved.
+*   5:00 PM: The incident was declared and marked resolved.
 
 ### Root Cause and Resolution:
 
