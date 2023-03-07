@@ -1,4 +1,4 @@
-# 0x1A. Application
+# 0x1A. Application Server
 
 ### Concepts
 
