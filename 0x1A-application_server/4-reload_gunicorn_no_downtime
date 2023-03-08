@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn.
 
-# Define the PID file location
-PID_FILE=/run/gunicorn.pid
+# Get the Gunicorn master PID
+MASTER_PID=$(ps auxf | grep '[g]unicorn.*master' | awk '{print $2}')
 
-# Send a signal to gracefully reload Gunicorn
-if [ -f $PID_FILE ]; then
-    echo "Reloading Gunicorn gracefully"
-    kill -s HUP $(cat $PID_FILE)
-else
-    echo "Gunicorn is not running"
-fi
+# Reload Gunicorn gracefully
+kill -HUP $MASTER_PID
