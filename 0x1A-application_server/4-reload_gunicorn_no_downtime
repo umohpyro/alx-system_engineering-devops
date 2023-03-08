@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn.
 
-# Get the Gunicorn master PID
-MASTER_PID=$(ps auxf | grep '[g]unicorn.*master' | awk '{print $2}')
-
-# Reload Gunicorn gracefully
-kill -HUP $MASTER_PID
+pkill -HUP gunicorn
