@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Gracefully reloads Gunicorn.
+
+# Define the PID file location
+PID_FILE=/run/gunicorn.pid
+
+# Send a signal to gracefully reload Gunicorn
+if [ -f $PID_FILE ]; then
+    echo "Reloading Gunicorn gracefully"
+    kill -s HUP $(cat $PID_FILE)
+else
+    echo "Gunicorn is not running"
+fi
