@@ -5,7 +5,7 @@ set -e
 
 if pgrep gunicorn > /dev/null; then
     echo "Reloading Gunicorn gracefully..."
-    pkill -HUP -v gunicorn
+    kill -HUP -v gunicorn
     echo "Gunicorn workers renewed."
 else
     echo "Gunicorn is not running."
