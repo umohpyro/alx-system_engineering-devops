@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn.
 
-#Find the PID of the Gunicorn process
-PID=$(ps ax | grep '[g]unicorn' | awk '{print $1}')
+pid=$(pgrep gunicorn)
 
-if [ -z "$PID" ]; then
+if [[ -n "$pid" ]]; then
+    kill -HUP "$pid"
+    echo "Gunicorn reloaded"
+else
     echo "Gunicorn is not running"
-    exit 1
 fi
-
-# Send the HUP signal to the Gunicorn process
-kill -HUP "$PID"
