@@ -79,7 +79,7 @@ Requirements
   app.
 
 * **6. Deploy it**
-  * [gunicorn.conf](./gunicorn.conf): Configuration file for an Upstart script that starts a
+  * [gunicorn.service](./gunicorn.service): Configuration file for an Upstart script that starts a
   Gunicorn process bounded to port 5003 that serves the content from task 5.
   * The Gunicorn process spawns three worker processes and logs errors to `/tmp/airbnb-error.log`,
   access to `/tmp/airbnb-access.log`.
